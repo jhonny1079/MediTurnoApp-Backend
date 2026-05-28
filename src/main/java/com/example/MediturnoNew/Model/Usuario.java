@@ -1,6 +1,7 @@
 package com.example.MediturnoNew.Model;
 
 import com.example.MediturnoNew.Enumeraciones.Rol;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,14 +53,14 @@ public class Usuario {
      * 'mappedBy' indica que la entidad Paciente es la dueña de la clave foránea.
      * Al guardar un Usuario, también se persiste el Paciente asociado (si existe).
      */
-
+    @JsonIgnore
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private Paciente paciente;
 
     /**
      * Relación uno a uno con Médico.
      */
-
+    @JsonIgnore
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private Medico medico;
     /**
